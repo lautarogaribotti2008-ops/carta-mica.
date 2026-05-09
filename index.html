@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Mica 💖</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffeef2;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        /* Control de pantallas */
+        .screen {
+            display: none; /* Oculta todas las pantallas por defecto */
+            flex-direction: column;
+            align-items: center;
+            width: 90%;
+            max-width: 400px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .screen.active {
+            display: flex; /* Solo muestra la pantalla activa */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .main-img {
+            width: 250px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border-radius: 15px;
+        }
+
+        .main-img:hover {
+            transform: scale(1.1);
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            color: #444;
+            line-height: 1.6;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        h2, h3 { color: #d63384; }
+
+        .return-btn {
+            margin-top: 20px;
+            background-color: #ff85a2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Pantalla Inicial -->
+    <div class="screen active" id="screen1">
+        <h2>Hola Mica... 💖</h2>
+        <img src="https://acortar.link/BgOep0" alt="Carta" class="main-img" onclick="nextScreen(2)">
+        <p>Toca la carta para empezar</p>
+    </div>
+
+    <div class="screen" id="screen2">
+        <h2>¡Ábrelo! ✨</h2>
+        <img src="https://acortar.link/IieZ60" alt="Sobre" class="main-img" onclick="nextScreen(3)">
+    </div>
+
+    <div class="screen" id="screen3">
+        <h2>¿Qué dirá? 💭</h2>
+        <img src="https://acortar.link/ylGOP0" alt="Carta lista" class="main-img" onclick="nextScreen(4)">
+    </div>
+
+    <div class="screen" id="screen4">
+        <div class="card">
+            <h3>Para Mica 💌</h3>
+
+            <p>¡Feliz cumple, Mica! Llegó tu día 💖</p>
+            
+            <p>Espero que hoy sea un día hermoso para vos. Aunque no esté ahí físicamente para saludarte, quería regalarte este detalle. Gracias por dejarme conocerte y por aparecer en mi vida.</p>
+
+            <p>Sos una mujer muy fuerte y con un corazón enorme; es algo que admiro muchísimo de vos. Espero que hoy te sientas rodeada de mucho amor y alegría, porque sos alguien muy especial.</p>
+
+            <p>Perdón si a veces me cuesta demostrar lo que siento, pero de verdad espero que con esta cartita entiendas lo importante que sos para mí. Te valoro un montón (aunque me encante molestarte y hacerte enojar jajaja).</p>
+
+            <p>Ojalá te haya gustado la sorpresa. ¡Disfrutá mucho tu día!</p>
+
+            <p>Con mucho amor, <br><strong>Lauti</strong> 💌</p>
+        </div>
+
+        <button class="return-btn" onclick="nextScreen(1)">🔙 Regresar</button>
+    </div>
+
+    <script>
+        function nextScreen(num) {
+            // Buscamos todas las pantallas y quitamos la clase active
+            document.querySelectorAll('.screen').forEach(screen => {
+                screen.classList.remove('active');
+            });
+            // Mostramos solo la que corresponde
+            document.getElementById("screen" + num).classList.add("active");
+        }
+    </script>
+
+</body>
+</html>
